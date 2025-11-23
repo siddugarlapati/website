@@ -29,13 +29,12 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
           </div>
           
           <h1 className="text-5xl sm:text-7xl lg:text-8xl font-bold tracking-tight text-slate-900 mb-8 animate-in fade-in slide-in-from-bottom-8 duration-1000 fill-mode-both leading-[1.1]">
-            Automation,<br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-cyan-600 to-blue-600 bg-[length:200%_auto] animate-[gradient_8s_linear_infinite]">Reinvented.</span>
+            Automate Your Business.<br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-cyan-600 to-blue-600 bg-[length:200%_auto] animate-[gradient_8s_linear_infinite]">Free Your Team. Scale Faster with AI.</span>
           </h1>
           
           <p className="max-w-2xl text-lg sm:text-xl text-slate-500 leading-relaxed mb-10 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-200 fill-mode-both">
-            Aryantra transforms your workflows into fully autonomous systems powered by intelligent AI agents. 
-            No scripts. No complexity. Just clean execution.
+            We build custom AI agents and automations that remove manual work, reduce costs, and help teams operate 10× more efficiently.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-300 fill-mode-both">
@@ -166,38 +165,51 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
       `}</style>
       </section>
 
-      {/* Section 2: What Aryantra Does - Reduced padding */}
+      {/* Section 2: What We Do - Reduced padding */}
       <section className="py-16 px-6 bg-white relative z-10">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-          {[
-            { icon: Cpu, title: "Autonomous Agents", desc: "Agents that understand context, make decisions, and execute tasks — just like a real team member." },
-            { icon: Layers, title: "Workflow Automation", desc: "Automate onboarding, reminders, lead flows, support, notifications, and backend operations." },
-            { icon: Globe, title: "Deep Integrations", desc: "Connect WhatsApp, Email, Websites, Databases, CRMs, APIs, and internal tools seamlessly." }
-          ].map((feature, i) => (
-            <div key={i} className="group p-8 rounded-3xl bg-white border border-slate-100 shadow-sm hover:shadow-[0_8px_30px_rgba(0,0,0,0.04)] hover:-translate-y-1 transition-all duration-500">
-              <div className="h-14 w-14 rounded-2xl bg-slate-50 flex items-center justify-center mb-6 text-slate-900 group-hover:bg-blue-600 group-hover:text-white transition-all duration-500 shadow-sm group-hover:shadow-lg group-hover:shadow-blue-500/30">
-                <feature.icon size={26} strokeWidth={1.5} />
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">What We Do</h2>
+            <p className="text-slate-500 text-lg max-w-2xl mx-auto">We turn your business workflows into automated systems.</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              { icon: Cpu, title: "AI Voice Agents", desc: "24/7 customer support + lead capture. Never miss a call or opportunity again." },
+              { icon: Layers, title: "AI Back-Office Automation", desc: "Automate emails, invoices, CRM updates, and scheduling. Save 30-50 hours/week." },
+              { icon: Globe, title: "AI Marketing & Sales Workflows", desc: "Content generation, lead follow-ups, ads, and reporting on autopilot." }
+            ].map((feature, i) => (
+              <div key={i} className="group p-8 rounded-3xl bg-white border border-slate-100 shadow-sm hover:shadow-[0_8px_30px_rgba(0,0,0,0.04)] hover:-translate-y-1 transition-all duration-500">
+                <div className="h-14 w-14 rounded-2xl bg-slate-50 flex items-center justify-center mb-6 text-slate-900 group-hover:bg-blue-600 group-hover:text-white transition-all duration-500 shadow-sm group-hover:shadow-lg group-hover:shadow-blue-500/30">
+                  <feature.icon size={26} strokeWidth={1.5} />
+                </div>
+                <h3 className="text-xl font-bold text-slate-900 mb-3">{feature.title}</h3>
+                <p className="text-slate-500 leading-relaxed text-sm">{feature.desc}</p>
               </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-3">{feature.title}</h3>
-              <p className="text-slate-500 leading-relaxed text-sm">{feature.desc}</p>
-            </div>
-          ))}
+            ))}
+          </div>
+          <div className="text-center mt-8">
+            <p className="text-slate-600 font-medium">No fluff. Real workflows. Measurable results.</p>
+          </div>
         </div>
       </section>
 
-      {/* Section 3: Signature Showcase - Reduced padding */}
+      {/* Section 3: Proof of Work - Reduced padding */}
       <section className="py-20 px-6 bg-slate-50 overflow-hidden">
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16">
           <div className="lg:w-1/2 space-y-8 animate-on-scroll">
             <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-slate-900 leading-tight">
-              AI that works like<br/>a team member.
+              Real Results
             </h2>
             <p className="text-lg text-slate-500 leading-relaxed">
-              Your intelligent operator — responding, executing, updating, coordinating. 
-              Aryantra moves beyond simple triggers to context-aware actions that adapt to your business needs.
+              We don't just promise automation — we deliver measurable impact to your bottom line.
             </p>
             <div className="space-y-4 pt-4">
-              {['Natural Language Understanding', 'Contextual Decision Making', 'Self-Correcting Workflows'].map((item, i) => (
+              {[
+                '72% reduction in response time for a services company',
+                '30–50 hours/week saved for founders',
+                '4× more follow-ups → 2× more closed deals',
+                '90% of repetitive tasks automated'
+              ].map((item, i) => (
                 <div key={i} className="flex items-center gap-3 group">
                   <div className="h-6 w-6 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center group-hover:scale-110 transition-transform shadow-sm">
                     <Check size={14} strokeWidth={3} />
@@ -250,30 +262,31 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
         </div>
       </section>
 
-      {/* Section 4: Workflow Deep-Dive Grid - Reduced padding */}
+      {/* Section 4: Why Aryantra - Reduced padding */}
       <section className="py-20 px-6 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">Automation for every workflow.</h2>
-            <p className="text-slate-500 text-lg">From simple notifications to complex backend operations.</p>
+            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">Why Aryantra</h2>
+            <p className="text-slate-500 text-lg">We build everything custom, deliver fast, and stay transparent.</p>
           </div>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { title: "Auto Lead Handling", icon: Zap },
-              { title: "Customer Support", icon: MessageSquare },
-              { title: "Smart Reminders", icon: Bell },
-              { title: "Notifications", icon: Activity },
-              { title: "CRM Updates", icon: Database },
-              { title: "Backend Actions", icon: Cpu },
-              { title: "Web Assistance", icon: Globe },
-              { title: "WhatsApp Auto", icon: MessageSquare },
+              { title: "Custom Built", icon: Zap, desc: "Tailored to your exact needs" },
+              { title: "Latest AI Stack", icon: Cpu, desc: "OpenAI, Claude, Meta, N8N, Make" },
+              { title: "Fast Delivery", icon: Activity, desc: "Deploy in days, not months" },
+              { title: "Transparent Pricing", icon: Database, desc: "No hidden costs" },
+              { title: "Founder-Led", icon: MessageSquare, desc: "Direct execution by experts" },
+              { title: "24/7 Support", icon: Bell, desc: "Always here when you need us" },
+              { title: "Proven Results", icon: Globe, desc: "Real metrics, real impact" },
+              { title: "Scalable Systems", icon: Layers, desc: "Grow without limits" },
             ].map((item, i) => (
               <div key={i} className="group p-6 rounded-2xl border border-slate-100 bg-white hover:shadow-[0_8px_30px_rgba(0,0,0,0.04)] transition-all duration-300 cursor-default hover:-translate-y-1">
                 <div className="h-10 w-10 rounded-full bg-slate-50 flex items-center justify-center mb-4 text-slate-500 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
                    <item.icon size={20} />
                 </div>
-                <h3 className="font-semibold text-slate-900">{item.title}</h3>
+                <h3 className="font-semibold text-slate-900 mb-1">{item.title}</h3>
+                <p className="text-xs text-slate-500">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -344,10 +357,11 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
       <section className="py-20 px-6 text-center bg-white relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-slate-50/80 pointer-events-none"></div>
         <div className="relative z-10 max-w-3xl mx-auto">
-          <h2 className="text-4xl sm:text-6xl font-bold text-slate-900 tracking-tight mb-8 leading-tight">Build your AI-powered<br/>automation today.</h2>
+          <h2 className="text-4xl sm:text-6xl font-bold text-slate-900 tracking-tight mb-4 leading-tight">Let's automate your business.</h2>
+          <p className="text-xl text-slate-500 mb-8">Book your free audit call.</p>
           <div className="flex justify-center">
             <Button size="xl" className="rounded-full shadow-xl shadow-blue-500/20 px-10 py-4 text-lg bg-blue-600 hover:bg-blue-700 border-0" onClick={() => handleNav('contact')}>
-              Contact Us
+              Book Free Audit
             </Button>
           </div>
         </div>

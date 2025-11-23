@@ -23,14 +23,14 @@ export const About: React.FC<AboutProps> = ({ onNavigate }) => {
                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-blue-600"></span>
             </span>
-            <span className="text-xs font-bold tracking-wide uppercase text-slate-600">The Aryantra Story</span>
+            <span className="text-xs font-bold tracking-wide uppercase text-slate-600">About Aryantra</span>
           </div>
           <h1 className="text-5xl sm:text-7xl md:text-8xl font-bold text-slate-900 tracking-tight mb-8 leading-[1.05]">
-            We Engineer <br/>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-600 bg-[length:200%_auto] animate-[gradient_6s_linear_infinite]">Autonomous Futures.</span>
+            We automate your business,<br/>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-600 bg-[length:200%_auto] animate-[gradient_6s_linear_infinite]">eliminate manual work.</span>
           </h1>
           <p className="text-xl md:text-2xl text-slate-500 leading-relaxed max-w-3xl mx-auto font-light">
-            Aryantra is not just a software company. We are a collective of <span className="text-slate-900 font-medium">automation architects</span> obsessed with removing friction from the global economy.
+            We help you scale using AI agents and workflows. No fluff. Real automation. Measurable results.
           </p>
         </div>
 
@@ -210,6 +210,58 @@ export const About: React.FC<AboutProps> = ({ onNavigate }) => {
                     </div>
                 </div>
             </div>
+        </div>
+
+        {/* FOUNDER SECTION - NEW */}
+        <div className="mb-32 bg-gradient-to-br from-slate-50 to-white rounded-[40px] p-8 md:p-16 border border-slate-100 shadow-xl">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div className="lg:col-span-5">
+              <div className="relative aspect-square rounded-3xl overflow-hidden shadow-2xl border-4 border-white ring-1 ring-slate-100">
+                <img 
+                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1000&auto=format&fit=crop" 
+                  alt="Abhi - Founder of Aryantra" 
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent"></div>
+                <div className="absolute bottom-6 left-6 text-white">
+                  <div className="text-2xl font-bold">Abhi</div>
+                  <div className="text-sm opacity-90">Founder & CEO</div>
+                </div>
+              </div>
+            </div>
+            
+            <div className="lg:col-span-7 space-y-6">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-xs font-bold uppercase tracking-wider mb-2">
+                <Users size={12} /> Meet the Founder
+              </div>
+              <h2 className="text-4xl font-bold text-slate-900">Hi, I'm Abhi</h2>
+              <div className="space-y-4 text-lg text-slate-600 leading-relaxed">
+                <p>
+                  "I help businesses remove manual work using AI automations. My job is simple: turn your operations into scalable systems."
+                </p>
+                <p>
+                  I started Aryantra because I was frustrated seeing talented teams waste hours on repetitive tasks. I knew AI could do better — not just assist, but actually execute.
+                </p>
+                <p>
+                  Today, we've helped dozens of companies save thousands of hours and scale without hiring armies of people. We build custom AI agents that work like team members, not tools.
+                </p>
+              </div>
+              <div className="pt-4">
+                <div className="inline-block">
+                  <div className="text-3xl font-bold text-slate-900 mb-1" style={{fontFamily: 'Brush Script MT, cursive'}}>Abhi</div>
+                  <div className="text-sm text-slate-500">Founder, Aryantra</div>
+                </div>
+              </div>
+              <div className="flex gap-4 pt-4">
+                <Button onClick={() => handleNav('contact')} className="bg-blue-600 hover:bg-blue-700 border-0 text-white">
+                  Book a Call with Abhi
+                </Button>
+                <Button onClick={() => window.open('https://linkedin.com', '_blank')} variant="outline">
+                  Connect on LinkedIn
+                </Button>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* IMAGE GRID / STORY (Retained from original but pushed down) */}
