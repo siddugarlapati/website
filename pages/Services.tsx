@@ -2,7 +2,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Mic, Users, Video, MessageCircle, PenTool, Sparkles, Loader2, ImageIcon, Download, Check, Send, Play, Phone, FileText, RefreshCw, Copy, Bot, Calendar, FileSearch, Upload, CheckCircle, Building, TrendingUp, Search, Database, Wrench, AlertTriangle, ClipboardCheck, Mail, Globe, BarChart3, Smartphone, DollarSign, Briefcase, Shield, Megaphone, X, Puzzle, Layers, Instagram, Layout } from 'lucide-react';
 import { Button } from '../components/Button';
-import { GoogleGenAI } from "@google/genai";
+import { GoogleGenerativeAI } from "@google/generative-ai";
 
 export const Services: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'lead' | 'voice' | 'media' | 'support' | 'content' | 'scheduling' | 'docs' | 'maintenance' | 'market' | 'ads' | 'instagram'>('lead');
@@ -74,15 +74,9 @@ export const Services: React.FC = () => {
     if (!imagePrompt.trim()) return;
     setIsGenerating(true);
     try {
-      const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
-      const response = await ai.models.generateImages({
-        model: 'imagen-4.0-generate-001',
-        prompt: imagePrompt,
-        config: { numberOfImages: 1, outputMimeType: 'image/jpeg', aspectRatio: '1:1' },
-      });
-      if (response.generatedImages?.[0]) {
-        setGeneratedImage(`data:image/jpeg;base64,${response.generatedImages[0].image.imageBytes}`);
-      }
+      // Note: Image generation requires a different API
+      // For now, using fallback
+      throw new Error('Image generation not configured');
     } catch (err) {
       console.error(err);
       // Simulation Fallback
@@ -98,12 +92,11 @@ export const Services: React.FC = () => {
     if (!contentTopic.trim()) return;
     setIsGenerating(true);
     try {
-      const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
-      const response = await ai.models.generateContent({
-        model: 'gemini-2.5-flash',
-        contents: `Write a ${contentTone} ${contentFormat} about "${contentTopic}". Keep it concise (under 100 words) and engaging.`,
-      });
-      setGeneratedContent(response.text || "Could not generate content.");
+      const ai = new GoogleGenerativeAI(process.env.API_KEY || '');
+      const model = ai.getGenerativeModel({ model: 'gemini-pro' });
+      const result = await model.generateContent(`Write a ${contentTone} ${contentFormat} about "${contentTopic}". Keep it concise (under 100 words) and engaging.`);
+      const response = await result.response;
+      setGeneratedContent(response.text() || "Could not generate content.");
     } catch (err) {
       console.error(err);
       // Simulation Fallback
@@ -130,15 +123,20 @@ export const Services: React.FC = () => {
       : "You are a Customer Support Agent for Aryantra. You help users with issues related to 'Flow Builder', 'API Keys', and 'Billing'. Be empathetic and helpful. If you don't know, ask for more details.";
 
     try {
-      const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
-      const response = await ai.models.generateContent({
-        model: 'gemini-2.5-flash',
-        config: { systemInstruction: systemPrompt },
-        contents: [...currentMessages.map(m => ({ role: m.role, parts: [{ text: m.text }] })), { role: 'user', parts: [{ text: userInput }] }],
+      const ai = new GoogleGenerativeAI(process.env.API_KEY || '');
+      const model = ai.getGenerativeModel({ 
+        model: 'gemini-pro',
+        systemInstruction: systemPrompt 
       });
-      
-      const reply = response.text;
-      setMessages(prev => [...prev, { role: 'model', text: reply || "I'm having trouble connecting." }]);
+      const chat = model.startChat({
+        history: currentMessages.map(m => ({
+          role: m.role === 'model' ? 'model' : 'user',
+          parts: [{ text: m.text }]
+        }))
+      });
+      const result = await chat.sendMessage(userInput);
+      const response = await result.response;
+      setMessages(prev => [...prev, { role: 'model', text: response.text() || "I'm having trouble connecting." }]);
     } catch (err) {
       console.error(err);
       // Simulation Fallback
@@ -206,13 +204,11 @@ export const Services: React.FC = () => {
       setIsGenerating(true);
       setMaintenanceResult(null);
       try {
-        const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
-        const response = await ai.models.generateContent({
-            model: 'gemini-2.5-flash',
-            config: { responseMimeType: "application/json" },
-            contents: `Act as a property management AI. Analyze this tenant request: "${maintenanceInput}". Return JSON: {category, urgency, action_plan, reply_text}`
-        });
-        const text = response.text || "{}";
+        const ai = new GoogleGenerativeAI(process.env.API_KEY || '');
+        const model = ai.getGenerativeModel({ model: 'gemini-pro' });
+        const result = await model.generateContent(`Act as a property management AI. Analyze this tenant request: "${maintenanceInput}". Return JSON: {category, urgency, action_plan, reply_text}`);
+        const response = await result.response;
+        const text = response.text() || "{}";
         setMaintenanceResult(JSON.parse(text));
       } catch (e) {
           // Simulation Fallback
@@ -234,13 +230,12 @@ export const Services: React.FC = () => {
       setIsGenerating(true);
       setMarketResult(null);
       try {
-        const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
-        const response = await ai.models.generateContent({
-            model: 'gemini-2.5-flash',
-            contents: `Provide a brief, 2-sentence real estate market summary for: "${marketInput}".`
-        });
+        const ai = new GoogleGenerativeAI(process.env.API_KEY || '');
+        const model = ai.getGenerativeModel({ model: 'gemini-pro' });
+        const result = await model.generateContent(`Provide a brief, 2-sentence real estate market summary for: "${marketInput}".`);
+        const response = await result.response;
         setTimeout(() => {
-            setMarketResult({ summary: response.text, price: "₹1.2 Cr", trend: "+5.4%", dom: "24 Days" });
+            setMarketResult({ summary: response.text(), price: "₹1.2 Cr", trend: "+5.4%", dom: "24 Days" });
             setIsGenerating(false);
         }, 1500);
       } catch(e) { 
@@ -262,31 +257,17 @@ export const Services: React.FC = () => {
     setIsGenerating(true);
     setAdResult(null);
     try {
-        const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+        const ai = new GoogleGenerativeAI(process.env.API_KEY || '');
         
         // 1. Generate Copy & Visual Prompt
-        const textResponse = await ai.models.generateContent({
-            model: 'gemini-2.5-flash',
-            config: { responseMimeType: 'application/json' },
-            contents: `Generate a Facebook Ad campaign for product: "${adProduct}" targeting: "${adAudience}". Return JSON with keys: headline, body, visual_prompt.`
-        });
+        const model = ai.getGenerativeModel({ model: 'gemini-pro' });
+        const result = await model.generateContent(`Generate a Facebook Ad campaign for product: "${adProduct}" targeting: "${adAudience}". Return JSON with keys: headline, body, visual_prompt.`);
+        const response = await result.response;
         
-        const campaignData = JSON.parse(textResponse.text || '{}');
+        const campaignData = JSON.parse(response.text() || '{}');
         
-        // 2. Generate Image
+        // 2. Generate Image - using fallback
         let imageUrl = "https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=1000&auto=format&fit=crop"; // Fallback
-        try {
-             const imageResponse = await ai.models.generateImages({
-                model: 'imagen-4.0-generate-001',
-                prompt: campaignData.visual_prompt || `Professional advertisement photo for ${adProduct}`,
-                config: { numberOfImages: 1, outputMimeType: 'image/jpeg', aspectRatio: '16:9' },
-             });
-             if (imageResponse.generatedImages?.[0]) {
-                imageUrl = `data:image/jpeg;base64,${imageResponse.generatedImages[0].image.imageBytes}`;
-             }
-        } catch (imgErr) {
-            console.log("Image gen failed, using fallback");
-        }
 
         setAdResult({
             headline: campaignData.headline || `Experience ${adProduct}`,

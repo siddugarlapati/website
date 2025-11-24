@@ -25,7 +25,7 @@ export const About: React.FC<AboutProps> = ({ onNavigate }) => {
             </span>
             <span className="text-xs font-bold tracking-wide uppercase text-slate-600">About Aryantra</span>
           </div>
-          <h1 className="text-5xl sm:text-7xl md:text-8xl font-bold text-slate-900 tracking-tight mb-8 leading-[1.05]">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-slate-900 tracking-tight mb-8 leading-tight">
             We automate your business,<br/>
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-600 bg-[length:200%_auto] animate-[gradient_6s_linear_infinite]">eliminate manual work.</span>
           </h1>
@@ -73,34 +73,96 @@ export const About: React.FC<AboutProps> = ({ onNavigate }) => {
                             </div>
                         </div>
                     </div>
-                    <div className="relative h-[500px] bg-slate-800/50 rounded-3xl border border-slate-700 p-8 flex items-center justify-center">
-                        {/* Visualizing the "Central Brain" concept */}
-                        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
+                    <div className="relative h-[500px] bg-gradient-to-br from-slate-800 to-slate-900 rounded-3xl border border-slate-700 p-8 overflow-hidden">
+                        {/* Background pattern */}
+                        <div className="absolute inset-0 opacity-5">
+                            <div className="absolute inset-0" style={{backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(255,255,255,0.15) 1px, transparent 0)', backgroundSize: '40px 40px'}}></div>
+                        </div>
                         
-                        <div className="relative w-full h-full flex items-center justify-center">
-                            {/* Central Hub */}
-                            <div className="absolute z-20 w-32 h-32 bg-blue-600 rounded-full flex items-center justify-center shadow-[0_0_50px_rgba(37,99,235,0.5)] animate-pulse-slow">
-                                <div className="text-center">
-                                    <div className="font-bold text-2xl">Core</div>
-                                    <div className="text-[10px] uppercase tracking-widest opacity-80">Intelligence</div>
+                        {/* Real Estate Workflow Visualization */}
+                        <div className="relative h-full flex flex-col justify-between">
+                            {/* Title */}
+                            <div className="text-center mb-6">
+                                <div className="text-sm text-slate-400 uppercase tracking-wider mb-2">Real Estate Automation Flow</div>
+                                <div className="text-lg font-bold text-white">From Lead to Closed Deal</div>
+                            </div>
+
+                            {/* Workflow Steps */}
+                            <div className="flex-1 flex flex-col justify-center space-y-6">
+                                {/* Step 1 */}
+                                <div className="flex items-center gap-4 group">
+                                    <div className="flex-shrink-0 w-12 h-12 bg-blue-500 rounded-xl flex items-center justify-center text-white font-bold shadow-lg">
+                                        1
+                                    </div>
+                                    <div className="flex-1 bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20 group-hover:bg-white/15 transition-colors">
+                                        <div className="font-bold text-white text-sm mb-1">Lead Capture</div>
+                                        <div className="text-xs text-slate-400">WhatsApp, Website, Social Media</div>
+                                    </div>
+                                    <div className="text-green-400 text-xs font-bold">Instant</div>
+                                </div>
+
+                                {/* Arrow */}
+                                <div className="flex justify-center">
+                                    <div className="w-px h-8 bg-gradient-to-b from-blue-400 to-cyan-400"></div>
+                                </div>
+
+                                {/* Step 2 */}
+                                <div className="flex items-center gap-4 group">
+                                    <div className="flex-shrink-0 w-12 h-12 bg-cyan-500 rounded-xl flex items-center justify-center text-white font-bold shadow-lg">
+                                        2
+                                    </div>
+                                    <div className="flex-1 bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20 group-hover:bg-white/15 transition-colors">
+                                        <div className="font-bold text-white text-sm mb-1">Qualification</div>
+                                        <div className="text-xs text-slate-400">Budget, Timeline, Requirements</div>
+                                    </div>
+                                    <div className="text-green-400 text-xs font-bold">2 min</div>
+                                </div>
+
+                                {/* Arrow */}
+                                <div className="flex justify-center">
+                                    <div className="w-px h-8 bg-gradient-to-b from-cyan-400 to-purple-400"></div>
+                                </div>
+
+                                {/* Step 3 */}
+                                <div className="flex items-center gap-4 group">
+                                    <div className="flex-shrink-0 w-12 h-12 bg-purple-500 rounded-xl flex items-center justify-center text-white font-bold shadow-lg">
+                                        3
+                                    </div>
+                                    <div className="flex-1 bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20 group-hover:bg-white/15 transition-colors">
+                                        <div className="font-bold text-white text-sm mb-1">Site Visit Booking</div>
+                                        <div className="text-xs text-slate-400">Calendar sync, Reminders sent</div>
+                                    </div>
+                                    <div className="text-green-400 text-xs font-bold">5 min</div>
+                                </div>
+
+                                {/* Arrow */}
+                                <div className="flex justify-center">
+                                    <div className="w-px h-8 bg-gradient-to-b from-purple-400 to-green-400"></div>
+                                </div>
+
+                                {/* Step 4 */}
+                                <div className="flex items-center gap-4 group">
+                                    <div className="flex-shrink-0 w-12 h-12 bg-green-500 rounded-xl flex items-center justify-center text-white font-bold shadow-lg">
+                                        4
+                                    </div>
+                                    <div className="flex-1 bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20 group-hover:bg-white/15 transition-colors">
+                                        <div className="font-bold text-white text-sm mb-1">Follow-up & Close</div>
+                                        <div className="text-xs text-slate-400">Automated nurturing until deal closes</div>
+                                    </div>
+                                    <div className="text-green-400 text-xs font-bold">Auto</div>
                                 </div>
                             </div>
 
-                            {/* Orbiting Nodes */}
-                            {[0, 120, 240].map((deg, i) => (
-                                <div key={i} className="absolute w-full h-full animate-spin-slow" style={{animationDuration: '20s', animationDelay: `-${i * 5}s`}}>
-                                    <div className="absolute top-10 left-1/2 -translate-x-1/2">
-                                        <div className="w-16 h-16 bg-slate-800 border border-slate-600 rounded-xl flex items-center justify-center shadow-xl rotate-[0deg]" style={{transform: `rotate(-${(i * 120) + (360)}deg)`}}>
-                                            {i === 0 ? <Zap className="text-yellow-400"/> : i === 1 ? <Server className="text-purple-400"/> : <Network className="text-green-400"/>}
-                                        </div>
-                                        {/* Connector Line */}
-                                        <div className="absolute top-16 left-1/2 w-px h-20 bg-gradient-to-b from-slate-600 to-transparent"></div>
-                                    </div>
+                            {/* Bottom Stats */}
+                            <div className="mt-6 grid grid-cols-2 gap-4">
+                                <div className="bg-white/5 rounded-xl p-3 text-center border border-white/10">
+                                    <div className="text-2xl font-bold text-green-400">100%</div>
+                                    <div className="text-xs text-slate-400">Leads Captured</div>
                                 </div>
-                            ))}
-
-                            <div className="absolute bottom-8 text-center text-slate-500 text-xs">
-                                <p>Dynamic Neural Orchestration</p>
+                                <div className="bg-white/5 rounded-xl p-3 text-center border border-white/10">
+                                    <div className="text-2xl font-bold text-blue-400">24/7</div>
+                                    <div className="text-xs text-slate-400">Always Active</div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -215,14 +277,15 @@ export const About: React.FC<AboutProps> = ({ onNavigate }) => {
         {/* FOUNDER SECTION - NEW */}
         <div className="mb-32 bg-gradient-to-br from-slate-50 to-white rounded-[40px] p-8 md:p-16 border border-slate-100 shadow-xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <div className="lg:col-span-5">
-              <div className="relative aspect-square rounded-3xl overflow-hidden shadow-2xl border-4 border-white ring-1 ring-slate-100">
+            <div className="lg:col-span-5 relative group">
+              <div className="relative aspect-square rounded-3xl overflow-hidden shadow-2xl border-4 border-white ring-1 ring-slate-100 group-hover:scale-105 transition-transform duration-500">
                 <img 
                   src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1000&auto=format&fit=crop" 
                   alt="Abhi - Founder of Aryantra" 
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent"></div>
+                
                 <div className="absolute bottom-6 left-6 text-white">
                   <div className="text-2xl font-bold">Abhi</div>
                   <div className="text-sm opacity-90">Founder & CEO</div>
@@ -253,11 +316,17 @@ export const About: React.FC<AboutProps> = ({ onNavigate }) => {
                 </div>
               </div>
               <div className="flex gap-4 pt-4">
-                <Button onClick={() => handleNav('contact')} className="bg-blue-600 hover:bg-blue-700 border-0 text-white">
-                  Book a Call with Abhi
+                <Button onClick={() => handleNav('contact')} className="bg-blue-600 hover:bg-blue-700 border-0 text-white group">
+                  <span className="flex items-center gap-2">
+                    Book a Call with Abhi
+                    <ArrowRight className="group-hover:translate-x-1 transition-transform" size={16} />
+                  </span>
                 </Button>
-                <Button onClick={() => window.open('https://linkedin.com', '_blank')} variant="outline">
-                  Connect on LinkedIn
+                <Button onClick={() => window.open('https://linkedin.com', '_blank')} variant="outline" className="group">
+                  <span className="flex items-center gap-2">
+                    Connect on LinkedIn
+                    <Globe className="group-hover:scale-110 transition-transform" size={16} />
+                  </span>
                 </Button>
               </div>
             </div>
